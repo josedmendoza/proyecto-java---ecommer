@@ -4,12 +4,13 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,24 +39,23 @@ public class User {
 
 	private String mail;
 
-	@JsonIgnore
+	
 	@Column(name = "CREATION_DATE")
 	private LocalDate creationDate = LocalDate.now();
 
-	@JsonIgnore
+	@JsonIgnoreProperties(value = "user")
 	@OneToMany(mappedBy = "user")
 	private List<BillProduct> listBill;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "user")
-	private List<ListProduct> listProduct;
+	@JsonIgnoreProperties(value = "user")
+	@OneToOne(mappedBy = "user")
+	private ShoppingCart shoppingCart;
 
 	public User() {
 	}
 
 	public User(Integer dni, String firstName, String lastName, String direction, Date birthDate, Integer age,
-			Integer telf, String mail, LocalDate creationDate, List<BillProduct> listBill,
-			List<ListProduct> listProduct) {
+			Integer telf, String mail, LocalDate creationDate) {
 		this.dni = dni;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -65,19 +65,11 @@ public class User {
 		this.telf = telf;
 		this.mail = mail;
 		this.creationDate = creationDate;
-		this.listBill = listBill;
-		this.listProduct = listProduct;
 	}
 
-	@Override
-	public String toString() {
-		return "User [dni=" + dni + ", firstName=" + firstName + ", lastName=" + lastName + ", direction=" + direction
-				+ ", birthDate=" + birthDate + ", Age=" + Age + ", telf=" + telf + ", mail=" + mail + ", creationDate="
-				+ creationDate + ", listBill=" + listBill + ", listProduct=" + listProduct + "]";
-	}
+	
 
-
-
+	
 	
 
 }

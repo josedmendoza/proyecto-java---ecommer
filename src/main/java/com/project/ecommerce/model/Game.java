@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +18,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idGame")
 @Entity
 @Table(name = "GAME")
 public class Game {
@@ -46,12 +44,11 @@ public class Game {
 	private Date releaseDate;
 	
 	@Column(name = "CREATION_DATE")
-	@JsonIgnore
 	private LocalDateTime creationDate = LocalDateTime.now();
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "game")
-	 List<ListProduct> listProduct;
+	 List<ListProductCart> listShoppingCart;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_CATEGORY") // name corresponde al nombre de la FK 
@@ -61,7 +58,7 @@ public class Game {
 	}
 
 	public Game(Integer idGame, String name, String description, float price, Integer stock, Date releaseDate,
-			LocalDateTime creationDate, List<ListProduct> listProduct, Category category) {
+			LocalDateTime creationDate, List<ListProductCart> listShoppingCart, Category category) {
 		this.idGame = idGame;
 		this.name = name;
 		this.description = description;
@@ -69,7 +66,7 @@ public class Game {
 		this.stock = stock;
 		this.releaseDate = releaseDate;
 		this.creationDate = creationDate;
-		this.listProduct = listProduct;
+		this.listShoppingCart = listShoppingCart;
 		this.category = category;
 	}
 
@@ -77,7 +74,7 @@ public class Game {
 	public String toString() {
 		return "Game [idGame=" + idGame + ", name=" + name + ", description=" + description + ", price=" + price
 				+ ", stock=" + stock + ", releaseDate=" + releaseDate + ", creationDate=" + creationDate
-				+ ", listProduct=" + listProduct + ", category=" + category + "]";
+				+ ", listShoppingCart=" + listShoppingCart + ", category=" + category + "]";
 	}
 
 	

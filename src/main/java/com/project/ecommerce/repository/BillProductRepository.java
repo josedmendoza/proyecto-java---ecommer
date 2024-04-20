@@ -13,11 +13,25 @@ import lombok.RequiredArgsConstructor;
 @Repository
 public class BillProductRepository {
 
-	private final IBillProduct billProduct;
-
+	private final IBillProduct iBillProduct;
 
 	public Optional<BillProduct> findById(Integer idBill) {
-		return billProduct.findById(idBill);
+		return iBillProduct.findById(idBill);
+	}
+
+	public BillProduct updateBillH(BillProduct header, Float price, Integer Quantity) {
+
+		BillProduct findB = iBillProduct.findById(header.getIdBillG()).orElse(null);
+
+		findB.setTotalPrice(price);
+		findB.setTotalquantity(Quantity);
+
+		return iBillProduct.save(findB);
+
+	}
+
+	public BillProduct create(BillProduct data) {
+		return iBillProduct.save(data);
 	}
 
 }

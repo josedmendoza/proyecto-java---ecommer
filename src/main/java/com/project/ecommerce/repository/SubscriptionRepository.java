@@ -23,5 +23,11 @@ public class SubscriptionRepository {
 		return iSubscriptionRepostory.existsById(idSubscription);
 		
 	}
+	
+	public Subscription updateStockLPC(Integer id, Integer stock) {
+		Subscription find = iSubscriptionRepostory.findById(id).orElse(null);
+		find.setStock(stock);
+		return iSubscriptionRepostory.save(find);
+	}
 
 }

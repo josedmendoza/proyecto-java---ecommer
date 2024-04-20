@@ -22,7 +22,6 @@ public class GameServices {
 	private static Logger log = LoggerFactory.getLogger(ECommerceApplication.class);
 	
 	public Game createG (Game game) {
-		log.info("Se ejecuta metodo createG de la capa Service");
 		return gameRepository.save(game);
 	}
 	
@@ -41,5 +40,15 @@ public class GameServices {
 	public boolean validationId(Integer id) {
 		return gameRepository.existsId(id);
 	}
+	
+	public Game updateStockAddP(Integer idGame, Integer quantity) {
+		Game findG = gameRepository.findbyId(idGame).orElse(null);
+		Integer stock = findG.getStock();
+		Integer newStock = stock - quantity;
+		findG.setStock(newStock);
+		
+		return gameRepository.save(findG);
+	}
+	
 	
 }

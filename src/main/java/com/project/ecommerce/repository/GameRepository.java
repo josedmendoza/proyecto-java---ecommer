@@ -35,12 +35,27 @@ public class GameRepository {
 		return iGameRepository.save(find);
 	}
 	
+	public Game updateStockLPC(Integer id, Integer stock) {
+		Game find = iGameRepository.findById(id).orElseThrow();
+		find.setStock(stock);
+		return iGameRepository.save(find);
+	}
+	
+	
 	public Optional<?> findName(String name){
 		return iGameRepository.findDistincByNameContaining(name);
 	}
 	
 	public boolean existsId(Integer id) {
 		return iGameRepository.existsById(id);
+	}
+	
+	public Integer getstockGame(Integer idGame) {
+		return iGameRepository.getStockG(idGame);
+	}
+	
+	public Integer getStockSubs(Integer idSubs) {
+		return iGameRepository.getStockS(idSubs);
 	}
 	
 
