@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "6c4964b6-405d-4c64-8189-57b35299e53f",
+		"name": "e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26982714",
+		"_collection_link": "https://cloudy-firefly-37923.postman.co/workspace/ClienteApiRest~fbca00df-98a7-4e51-a32c-29b48e092883/collection/26982714-6c4964b6-405d-4c64-8189-57b35299e53f?action=share&source=collection_link&creator=26982714"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/finduser/4509375",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"finduser",
+								"4509375"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 2,\r\n    \"firstName\": \"jose\",\r\n    \"lastName\": \"mendoza\",\r\n    \"direction\": \"Zabala 2541\",\r\n    \"birthDate\": \"2000-10-05\",\r\n    \"telf\": 1159101087,\r\n    \"mail\": \"mario_perez@GMAIL.COM\",\r\n    \"age\": 23\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUSer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"pepito\",\r\n    \"lastName\": \"ramirez\",\r\n    \"direction\": \"Zabala 2541\",\r\n    \"birthDate\": \"2000-10-05\",\r\n    \"telf\": 1159451087,\r\n    \"mail\": \"mario_perez@GMAIL.COM\",\r\n    \"age\": 23\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/update/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "createGame",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FIFA 51\",\r\n    \"description\": \"JUEGO DE FUTBOL\",\r\n    \"price\": 1004.0,\r\n    \"stock\": -30,\r\n    \"releaseDate\": \"2022-06-10\",\r\n    \"category\": {\r\n        \"idCategory\": 5,\r\n        \"classification\": \"DEPORTE\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/game/creategame",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"game",
+								"creategame"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetGame",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/game/getgame/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"game",
+								"getgame",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateGame",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FIFA 51\",\r\n    \"description\": \"JUEGO DE FUTBOL\",\r\n    \"price\": 10014.0,\r\n    \"stock\": 30,\r\n    \"releaseDate\": \"2031-06-10\",\r\n    \"idCategory\": 4\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/game/updateGame/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"game",
+								"updateGame",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscription",
+			"item": [
+				{
+					"name": "GetSubscription",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subscription/getSubs/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subscription",
+								"getSubs",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "getCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/category/getcategory/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								"getcategory",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ShoppingCart",
+			"item": [
+				{
+					"name": "createShoppingCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"dni\": 4509375\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/shoppingcart/createcart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shoppingcart",
+								"createcart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetShoppinCart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shoppingcart/getcart/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shoppingcart",
+								"getcart",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ListProductCart",
+			"item": [
+				{
+					"name": "getListProductByCart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productcart/getproductCart/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productcart",
+								"getproductCart",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addproductGame",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"game\":{\r\n        \"idGame\" : 3\r\n    },\r\n    \"quantity\": 6,\r\n    \"shoppingCart\":{\r\n        \"idCart\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/productcart/addproduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productcart",
+								"addproduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateQuantity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"game\":{\r\n        \"idGame\" : 1\r\n    },\r\n    \"quantity\": -1,\r\n    \"shoppingCart\":{\r\n        \"idCart\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/productcart/updateQuantity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productcart",
+								"updateQuantity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BillProduct",
+			"item": [
+				{
+					"name": "createBill_Products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"idCart\": 3,\r\n        \"listProductCart\": [\r\n            {\r\n                \"game\": {\r\n                    \"idGame\": 1,\r\n                    \"name\": \"HORIZON DOWN\"\r\n                },\r\n                \"quantity\": 3,\r\n                \"price\": 24000\r\n            },\r\n            {\r\n                \"game\": {\r\n                    \"idGame\": 2,\r\n                    \"name\": \"FIFA 22\"\r\n                },\r\n                \"quantity\": 2,\r\n                \"price\": 10000\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/billproduct/createbill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"billproduct",
+								"createbill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createBill_Masive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n{\r\n        \"idCart\": 1,\r\n        \"listProductCart\": [\r\n            {\r\n                \"game\": {\r\n                    \"idGame\": 1,\r\n                    \"name\": \"HORIZON DOWN\"\r\n                },\r\n                \"quantity\": 3,\r\n                \"price\": 24000\r\n            },\r\n            {\r\n                \"game\": {\r\n                    \"idGame\": 2,\r\n                    \"name\": \"FIFA 22\"\r\n                },\r\n                \"quantity\": 2,\r\n                \"price\": 10000\r\n            }\r\n        ]\r\n},\r\n{\r\n        \"idCart\": 2,\r\n        \"listProductCart\": [\r\n                        {\r\n                \"subscription\": {\r\n                    \"idSubscription\": 1\r\n                },\r\n                \"quantity\": 1,\r\n                \"price\": 1500\r\n            }\r\n        ]\r\n\r\n}\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/billproduct/createbills",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"billproduct",
+								"createbills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBill",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/billproduct/getbill/18468723",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"billproduct",
+								"getbill",
+								"18468723"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
