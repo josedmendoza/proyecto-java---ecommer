@@ -21,6 +21,8 @@ import com.project.ecommerce.repository.ListProductCartRepository;
 import com.project.ecommerce.service.BillProductService;
 import com.project.ecommerce.service.BillingDetailService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -34,9 +36,12 @@ public class BillProductController {
 
 	private static Logger log = LoggerFactory.getLogger(ECommerceApplication.class);
 
-	// Metodo para obtener Facturas creadas
+	// Metodo para obtener las Factura de un cliente
+	@Operation(description = "Metodo  utilizado para obtener  las Factura de un cliente", summary = "Obtener facturas del cliente")
 	@GetMapping("/getbill/{iduser}")
-	public ResponseEntity<?> getbillProduct(@PathVariable(name = "iduser") Integer idUser) {
+	public ResponseEntity<?> getbillProduct(
+			@Parameter(description = "Id del cliente", required = true, example = "10071086")
+			@PathVariable(name = "iduser") Integer idUser) {
 
 		try {
 
@@ -52,7 +57,8 @@ public class BillProductController {
 
 	}
 
-	// Metodo para generar factuas
+	// Metodo para generar una factura
+	@Operation(description = "Metodo  utilizado para generar una factura", summary = "Generar Factura")
 	@PostMapping("/createbill")
 	public ResponseEntity<?> createBill(@RequestBody ShoppingCart productsDetail) {
 		// Creamos el ID de la factura
@@ -68,7 +74,8 @@ public class BillProductController {
 
 	}
 
-	// Metodo para generar factura masiva de clientes
+	// Metodo para generar multiples facturas  de clientes
+	@Operation(description = "Metodo  utilizado para generar multiples facturas de clientes", summary = "Generar multiples facturas")
 	@PostMapping("/createbills")
 	public ResponseEntity<?> createBills(@RequestBody List<ShoppingCart> productsCart) {
 

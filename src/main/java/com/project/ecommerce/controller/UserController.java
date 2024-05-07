@@ -18,6 +18,8 @@ import com.project.ecommerce.ECommerceApplication;
 import com.project.ecommerce.model.User;
 import com.project.ecommerce.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -29,8 +31,9 @@ public class UserController {
 
 	private static Logger log = LoggerFactory.getLogger(ECommerceApplication.class);
 
+	@Operation(description = "Metodo  utilizado para crear un usuario nuevo", summary = "Crear usuario")
 	@PostMapping(value = "/create", consumes = (MediaType.APPLICATION_JSON_VALUE))
-	public ResponseEntity<?> createUser(@RequestBody User user) {
+	public ResponseEntity<?> createUser( @RequestBody User user) {
 		try {
 
 			log.info("Se recibe los datos del usuario a crear {}", user);
@@ -50,9 +53,11 @@ public class UserController {
 
 	}
 
+	@Operation(description = "Metodo  utilizado para crear un usuario nuevo", summary = "Obtener un usuario")
 	@GetMapping(value = "finduser/{dni}")
-	public ResponseEntity<?> findUser(@PathVariable(name = "dni") Integer dni) {
-		
+	public ResponseEntity<?> findUser(
+			@Parameter(description = "Dni del usuario", required = true, example = "4509375") @PathVariable(name = "dni") Integer dni) {
+
 		try {
 			log.info("El ID del usuario es:  {}", dni);
 //			Optional<?> findId = userService.findU(dni);
@@ -64,14 +69,15 @@ public class UserController {
 				log.info("No se pudo encontrar los datos del usuario solicitado");
 				return ResponseEntity.badRequest().body("ERROR: no se encontro el usuario");
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			String msj = e.getMessage();
 			return ResponseEntity.badRequest().body("Error:" + msj);
 		}
 	}
 
+	@Operation(description = "Metodo utilizado para crear un usuario nuevo", summary = "Actualizar los datos un usuario")
 	@PutMapping("update/{dni}")
-	public ResponseEntity<?> updateUser(@PathVariable(name = "dni") Integer dni, @RequestBody User user) {
+	public ResponseEntity<?> updateUser(@Parameter(description = "Dni del usuario", required = true, example = "4509375") @PathVariable(name = "dni") Integer dni, @RequestBody User user) {
 		Optional<?> findId = userService.findU(dni);
 		if (findId.isPresent()) {
 			User update = userService.updateUser(dni, user);

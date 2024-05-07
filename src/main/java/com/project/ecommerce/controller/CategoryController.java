@@ -4,25 +4,30 @@ import java.util.Optional;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project.ecommerce.service.CategoryService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/category")
 public class CategoryController {
 	
 	private final CategoryService categoryService;
 	
-	
+	//Metodo para buscar las categorias
+	@Operation(description = "Metodo  utilizado para obtener las categorias  que se encuentra en la DB", summary = "Obtenger categorias")
 	@GetMapping(value = "/getcategory/{id}", produces = (MediaType.APPLICATION_JSON_VALUE))
-	public ResponseEntity<?> getCategory(@PathVariable(name = "id") Integer id) {
+	public ResponseEntity<?> getCategory(
+			@Parameter(description = "Id de la cateogoria", required = true, example = "1,2,3,...")
+			@PathVariable(name = "id") Integer id) {
 		try {
 			if(categoryService.validation(id) == true) {
 				Optional<?> find = categoryService.findCategory(id);

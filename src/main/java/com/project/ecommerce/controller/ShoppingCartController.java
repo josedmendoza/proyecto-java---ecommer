@@ -17,6 +17,7 @@ import com.project.ecommerce.model.dto.ShoppingCartDto;
 import com.project.ecommerce.service.ShoppingCartService;
 import com.project.ecommerce.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -30,7 +31,8 @@ public class ShoppingCartController {
 	
 	private static Logger log =  LoggerFactory.getLogger(ECommerceApplication.class);
 
-	
+	//Metodo para generar un ID de carrito de compra a un cliente
+	@Operation(description = "Metodo  utilizado para generar un ID de carrito de compra a un cliente", summary = "crear Carrito de compra por cliente")
 	@PostMapping("/createcart")
 	public ResponseEntity<?> createCart(@RequestBody ShoppingCart user ){
 		
@@ -56,7 +58,8 @@ public class ShoppingCartController {
 		
 	}
 		
-
+	// Metodo para obtener los datos del cliente segun el ID del carrito
+	@Operation(description = "Metodo  utilizado para obtener los datos del cliente segun el ID del carrito", summary = "Obtener cliente segun id de carrito de compras")
 	@GetMapping("/getcart/{id}")
 	public ResponseEntity<?> getCart(@PathVariable(name = "id") Integer idCart){
 		
