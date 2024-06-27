@@ -63,7 +63,7 @@ public class UserController {
 //			Optional<?> findId = userService.findU(dni);
 			if (userService.existsUser(dni) == true) {
 				Optional<?> findId = userService.findU(dni);
-				log.info("Se verifico que existe el ID y se retorna los datos del usuario correctamente");
+				log.info("Se verifico que existe el ID y se retorna los datos del usuario correctamente {}");
 				return ResponseEntity.ok(findId);
 			} else {
 				log.info("No se pudo encontrar los datos del usuario solicitado");
@@ -71,7 +71,10 @@ public class UserController {
 			}
 		} catch (Exception e) {
 			String msj = e.getMessage();
-			return ResponseEntity.badRequest().body("Error:" + msj);
+			log.info("Error al buscar el usuario, muetra el msj de la excepcion");
+//			return ResponseEntity.badRequest().body("Error:" + msj);
+			return ResponseEntity.internalServerError().body("Error: Datos mal cargados " + msj);
+
 		}
 	}
 
